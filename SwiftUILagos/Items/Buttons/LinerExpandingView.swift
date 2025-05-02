@@ -1,0 +1,40 @@
+//
+//  ExpandingView.swift
+//  Expand Animation
+//
+//  Created by Samnang Aing on 2024-05-10.
+//
+
+import SwiftUI
+
+struct LinerExpandingView: View {
+    @Binding var expand: Bool
+    let index: Int
+    var symbolName: String
+    
+    var body: some View {
+        ZStack{
+            ZStack{
+                Image(systemName: symbolName)
+                    .font(.system(size: 32, weight: .medium, design: .rounded))
+                    .foregroundColor(Color.black).padding()
+                    .scaleEffect(expand ? 1 : 0)
+                    .rotationEffect(expand ? .degrees(-45) : .degrees(0))
+                    .animation(.easeOut(duration: 0.15), value: expand)
+            }
+            .frame(width: 82, height: 82)
+            .background(Color.green)
+            .cornerRadius(expand ? 41 : 8)
+            .scaleEffect(expand ? 1 : 0.5)
+            
+            .offset(x: expand ? direction.offsets.0 : 0, y: expand ? direction.offsets.1 : 0)
+            .rotationEffect(expand ? .degrees(45) : .degrees(0))
+            .animation(Animation.easeOut(duration: 0.25).delay(0.05), value: expand)
+        }
+        .offset(x: direction.containerOffset.0, y: direction.containerOffset.1)
+    }
+}
+
+#Preview {
+    ExpandingView(expand: .constant(true), direction: .top, symbolName: "house.fill")
+}
