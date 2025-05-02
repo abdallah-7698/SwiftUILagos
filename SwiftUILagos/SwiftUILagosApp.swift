@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUILagosApp: App {
     var body: some Scene {
         WindowGroup {
-            HorizontalScroll3D()
+            CircularTextonPath(radius: 150, text: "Welcom")
         }
     }
 }
