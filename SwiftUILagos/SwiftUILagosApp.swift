@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUILagosApp: App {
     var body: some Scene {
         WindowGroup {
-            Blur2DemoView()
+            ShimiringContentView()
         }
     }
 }
